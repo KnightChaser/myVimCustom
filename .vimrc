@@ -3,16 +3,20 @@ set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-  Plugin 'VundleVim/Vundle.vim'                     " Vundle package itself
-  Plugin 'preservim/nerdtree'                       " sidebar file explorer
-  Plugin 'vim-airline/vim-airline'                  " pretty colorful information bar
-  Plugin 'rking/ag.vim'                             " finding helper in vim
+  Plugin 'VundleVim/Vundle.vim'         " Vundle package itself
+  Plugin 'preservim/nerdtree'           " sidebar file explorer
+  Plugin 'vim-airline/vim-airline'      " pretty colorful information bar
+  Plugin 'rking/ag.vim'                 " finding helper in vim
 call vundle#end()
 
 " Vim plug extension(plugin) packages
 call plug#begin('~/.vim/autoload')
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}   " Autocomplete for programming languages (:CocInstall coc-clangd coc-sh coc-html coc-json coc-markdownlint coc-phpls @yaegassy/coc-pylsp)
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}         " Autocomplete for programming languages
 call plug#end()
+
+" " Make <CR> to accept selected completion item or notify coc.nvim to format
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Ordinary settings
 set title
