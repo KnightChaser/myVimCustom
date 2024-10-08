@@ -1,4 +1,5 @@
 " Vim Vundle extension(plugin) packages
+let g:coc_disable_startup_warning = 1
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -13,6 +14,11 @@ call vundle#end()
 call plug#begin('~/.vim/autoload')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}         " Autocomplete for programming languages
 call plug#end()
+
+" Menu selecting color
+hi CocFloating ctermbg=DarkGrey
+hi CocMenuSel ctermbg=Blue
+hi CocSearch ctermfg=Cyan
 
 " " Make <CR> to accept selected completion item or notify coc.nvim to format
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
